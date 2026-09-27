@@ -1,0 +1,76 @@
+/* Optional starting points: merge selected rules into the existing theme.
+   Neutral colors are examples, not a prescribed brand palette. */
+:root {
+  --rw-font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+    "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+  --rw-font-heading: var(--rw-font-body);
+  --rw-page: #ffffff;
+  --rw-surface: #f1f5f9;
+  --rw-text: #172033;
+  --rw-muted: #475569;
+  --rw-accent: #1746a2;
+  --rw-border: #64748b;
+  --rw-focus: #1746a2;
+  --rw-text-small: 0.875rem;
+  --rw-text-body: 1rem;
+  /* Optical role scale; not a strict modular scale. */
+  --rw-text-section: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+  --rw-text-display: clamp(2rem, 1.25rem + 3vw, 4rem);
+  --rw-space-1: 0.5rem;
+  --rw-space-2: 1rem;
+  --rw-space-3: 1.5rem;
+  --rw-space-4: 2rem;
+  --rw-section-space: clamp(2.5rem, 2rem + 3vw, 5rem);
+  --rw-content-width: 75rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--rw-font-body);
+  font-size: var(--rw-text-body);
+  line-height: 1.6;
+  color: var(--rw-text);
+  background: var(--rw-page);
+}
+button, input, select, textarea { font: inherit; }
+img, video { max-inline-size: 100%; block-size: auto; }
+a { color: var(--rw-accent); text-underline-offset: 0.18em; }
+:focus-visible { outline: 3px solid var(--rw-focus); outline-offset: 3px; }
+
+.rw-container {
+  inline-size: min(100%, var(--rw-content-width));
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+.rw-prose { max-inline-size: 65ch; overflow-wrap: anywhere; }
+.rw-prose:lang(zh) { max-inline-size: 36em; line-height: 1.75; }
+.rw-prose :is(h2, h3, h4) {
+  margin-block: 1.8em 0.65em;
+  font-family: var(--rw-font-heading);
+  line-height: 1.3;
+}
+.rw-prose > :first-child { margin-block-start: 0; }
+.rw-display {
+  font-family: var(--rw-font-heading);
+  font-size: var(--rw-text-display);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+.rw-display:lang(zh) { line-height: 1.3; }
+.rw-stack > * + * { margin-block-start: var(--rw-space-3); }
+.rw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: var(--rw-space-3);
+}
+.rw-grid > * { min-inline-size: 0; }
+.rw-number { font-variant-numeric: tabular-nums; }
+/* Supply an accessible name and keyboard access to the scroll region in HTML. */
+.rw-table-scroll { max-inline-size: 100%; overflow-x: auto; }
+
+/* Explicitly opt decorative transitions in; no global animation kill switch. */
+@media (prefers-reduced-motion: no-preference) {
+  .rw-feedback { transition: color 150ms ease, background-color 150ms ease; }
+}

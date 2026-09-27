@@ -1,0 +1,4 @@
+interface:
+  display_name: "RenWork Web Design Master"
+  short_description: "品牌网页设计、响应式布局、中英文字体与可访问性实现及验收"
+  default_prompt: "使用 $renwork-web-design-master，依据真实内容与现有品牌设计或优化网页，并验证排版、移动端和关键交互。"
