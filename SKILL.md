@@ -1,6 +1,81 @@
----
+------
 name: renwork-web-design-master
-description: 为网站、落地页、B2B 产品页和 Web 应用设计或改造视觉、排版与响应式布局。覆盖品牌差异化、中英文及多语言字体、设计 token、可访问交互和浏览器验收；适用于新建前端、去模板感、字体配对、移动端错位及视觉审计。沿用现有技术栈与品牌，不替代后端实现、商业事实核验或上线授权。
+description: Production-grade frontend design and web typography engineering skill. Synthesizes Anthropic frontend-design, community modular scales, and the RenWork master design repository (cnproduct/renwork-web-design-master). Use when building, styling, auditing, or refactoring landing pages, SaaS dashboards, or UI components in React, Vue, HTML/CSS, or Tailwind.
+---
+
+# renwork-web-design-master
+
+A comprehensive, production-grade frontend design and typography master skill for AI agents (Claude Code, Antigravity, Cursor, Codex). Fuses the architectural discipline of `cnproduct/renwork-web-design-master` with Anthropic `frontend-design`, modular scale typography, and automated accessibility verification.
+
+## When to Use
+
+- Building or styling landing pages, documentation, B2B export portals, or SaaS application dashboards.
+- - Refactoring frontend code to eliminate AI-slop cliches (e.g. over-nested rounded cards, heavy drop shadows, single-word neon gradients).
+  - - Implementing math-driven fluid typography (`clamp()`), CJK/multilingual typography, and container-query layouts.
+    - - Auditing interactive states, keyboard accessibility, WCAG contrast ratios, and responsive boundaries.
+     
+      - ## Core Architectural Principles
+     
+      - 1. Initiation and Inheritance: Respect and inherit existing brand assets, established color tokens, and layout guidelines. Never overwrite working design systems with generic boilerplate. Use authentic content and real data; never invent fake statistics or placeholder logos.
+        2. 2. Evidence-Based Choices (Clear Goblet): Content dictates form. Avoid pure decoration such as aimless carousel sliders, floating glowing orbs, or arbitrary card nesting. Use hairline dividers (0.5px to 1px) and subtle lightness deltas instead of heavy diffuse shadows.
+           3. 3. Small, Consistent Token System: Define semantic design tokens for text, surfaces, borders, and spacing. Use relative units (`rem`, `clamp()`) and container queries (`@container`) over rigid media queries.
+              4. 4. Robust Interaction and Accessibility: Cover all 7 component states (Default, Hover, Focus, Active, Disabled, Loading, Error/Success). Ensure visible keyboard focus rings, touch targets >= 44x44px, zero horizontal overflow, and full WCAG AA/AAA compliance.
+                 5. 5. Verification-First Delivery: Every layout must be mathematically verified before delivery. Use `scripts/design_math.py` for contrast calculations and fluid clamp derivations. Report results honestly without fabricated scores.
+                   
+                    6. ## Workflow and Execution Steps
+                   
+                    7. 1. Inspect Context and Tokens:
+                       2.    - Check if an existing design system or CSS framework is present.
+                             -    - If starting fresh, reference `assets/foundations.css` for semantic token baselines.
+                                  - 2. Plan Typography and Measure:
+                                    3.    - Select font pairings matching the application archetype (see `references/typography.md`).
+                                          -    - Derive fluid font sizes using `python3 scripts/design_math.py fluid <min_px> <max_px> <min_vp> <max_vp>`.
+                                               -    - Constrain reading containers to `max-width: 65ch` (45ch to 75ch).
+                                                    -    - Apply the Heading Proximity Rule: heading top margin must be 1.8x to 2.5x of bottom margin.
+                                                         - 3. Layout and Component Construction:
+                                                           4.    - Follow layout patterns in `references/design-layout.md`.
+                                                                 -    - Prefer container queries (`@container`) for modular components.
+                                                                      -    - Use tinted neutrals via modern CSS `color-mix()` or OKLCH; avoid lifeless grey on colored surfaces.
+                                                                           - 4. Interactive States and Accessibility Check:
+                                                                             5.    - Implement all 7 component states (see `references/verification.md`).
+                                                                                   -    - Verify foreground-to-background contrast with `python3 scripts/design_math.py contrast <fg_hex> <bg_hex>`.
+                                                                                        -    - Ensure `prefers-reduced-motion` is respected.
+                                                                                             - 5. Final Delivery Verification:
+                                                                                               6.    - Run the Visual Audit Checklist and report results using strict factual tags ([PASS], [UNTESTED], [FAIL]).
+                                                                                                 
+                                                                                                     - ## Built-In Engineering Tools
+                                                                                                 
+                                                                                                     - The skill includes a zero-dependency CLI tool located at `scripts/design_math.py`:
+                                                                                                 
+                                                                                                     - ```bash
+                                                                                                       # Calculate WCAG 2.1 contrast ratio and AA/AAA compliance
+                                                                                                       python3 scripts/design_math.py contrast "#0f172a" "#f8fafc"
+
+                                                                                                       # Derive fluid clamp() formula between viewports (e.g. 16px to 20px over 360px to 1280px)
+                                                                                                       python3 scripts/design_math.py fluid 16 20 360 1280
+
+                                                                                                       # Run internal unit tests
+                                                                                                       python3 scripts/design_math.py self-test
+                                                                                                       ```
+                                                                                                       
+                                                                                                       ## Visual Audit Checklist
+                                                                                                       
+                                                                                                       1. [ ] No ungrounded generic AI-slop (no floating gradient pills, no unanchored center-aligned headlines).
+                                                                                                       2. 2. [ ] Contrast meets WCAG AA (>= 4.5:1 for body, >= 3.0:1 for large text and UI borders).
+                                                                                                          3. 3. [ ] Reading measure constrained to 45ch - 75ch; no line extends beyond 85ch.
+                                                                                                             4. 4. [ ] All 7 interactive states styled for buttons, form controls, and links.
+                                                                                                                5. 5. [ ] Fluid clamp() scales smoothly across 360px, 768px, 1280px, and 1920px with zero horizontal scroll.
+                                                                                                                   6. 6. [ ] CJK line-height is adjusted to 1.65 - 1.8 for adequate reading breathability.
+                                                                                                                      7. 7. [ ] Keyboard focus ring (:focus-visible) clearly visible with 2px offset.
+                                                                                                                        
+                                                                                                                         8. ## Gotchas
+                                                                                                                        
+                                                                                                                         9. - Never hardcode typography in pure pixels without clamp() or rem.
+                                                                                                                            - - Never use pure grey (#666, #999) on tinted backgrounds; always tint neutrals with the background hue.
+                                                                                                                              - - Do not mix more than two font families per page (plus an optional code font).
+                                                                                                                                - - Do not use uppercase text-transform on long sentences; restrict uppercase to acronyms or small badges.
+name: renwork-web-design-master
+description: 为网站、落地页、B2B 产品页和 Web 应用设计或改造视觉、排版与响应式布局。覆盖品牌差异化、中英文及多语言字体、设计 token、可访问交互和浏览器验收；适用于# Test新建前端、去模板感、字体配对、移动端错位及视觉审计。沿用现有技术栈与品牌，不替代后端实现、商业事实核验或上线授权。
 license: MIT
 metadata:
   author: cnproduct
